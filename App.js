@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
 
+import { StyleSheet, Text, View } from 'react-native';
+import Sampler from "./src/screens/Sampler"
+import data from "./src/data"
 export default function App() {
+
+  // states
+  const [songs,setSongs] = useState(data());
+  const [currentSong, setCurrentSong] = useState(songs[0]);
+
+  //functions
+
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Sampler currentSong={currentSong} songs={songs}/>
     </View>
   );
 }
