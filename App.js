@@ -7,7 +7,7 @@ export default function App() {
 
   // states
   const [songs,setSongs] = useState(data());
-  const [currentSong, setCurrentSong] = useState(songs[0]);
+  const [currentSong, setCurrentSong] = useState(songs[1]);
 
   //functions
 
