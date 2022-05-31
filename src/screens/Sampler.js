@@ -1,45 +1,42 @@
-import React, {useState, useEffect} from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
-import {Audio} from 'expo-av';
+import React, {useState} from 'react';
+
+import { StyleSheet, Text, View } from 'react-native';
+import data from "./data";
+import Pad from './Pad';
 
 
-const Sampler = ({currentSong, songs}) => {
-    
-
-    const playSound = async () => {
-        await Audio.Sound.createAsync(
-          {uri:(currentSong.audio)},
-          {shouldPlay:true}
-        )
-     }
-
-    return(
-
-    <View style ={styles.container}>
 
 
-        <TouchableOpacity onPress={playSound}>
-            <ImageBackground source={{uri:currentSong.cover}}  style={styles.image}>
-            </ImageBackground>
-        </TouchableOpacity>
+export default function Sampler() {
 
-    </View> 
-    )
+  // states
+  const [songs,setSongs] = useState(data());
+  const [currentSong, setCurrentSong] = useState(songs[1]);
+
+  //functions
+
+  
+  return (
+    <View style={styles.library}>
+      <Text>Vue</Text>
+        <View style={styles.libraryPads}>
+            {songs.map(song => 
+            <Pad key={song.id} song={song}/>
+            )}
+        </View>
+        
+    </View>
+  );
 }
 
-
 const styles = StyleSheet.create({
-    container:{
-        resizeMode: "cover",
-    },
-
-    image:{
-    width: 50,
-    height: 50,
-    padding: 10,
-    borderRadius: 70,
-    justifyContent: "center"
-
-    }
-})
-export default Sampler;
+  library: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  libraryPads:{
+      
+  }
+});
