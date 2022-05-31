@@ -16,8 +16,6 @@ const Pad = ({currentSong, songs, song}) => {
 
     <View style ={styles.container}>
 
-        
-
         <TouchableOpacity onPress={playSound}>
             <ImageBackground source={{uri:song.cover}}  style={styles.image}>
             </ImageBackground>
@@ -31,11 +29,12 @@ const Pad = ({currentSong, songs, song}) => {
 const styles = StyleSheet.create({
     container:{
         resizeMode: "cover",
+        padding:5,        
     },
 
     image:{
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     padding: 10,
     borderRadius: 70,
     justifyContent: "center"
