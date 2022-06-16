@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, ImageBackground, StyleSheet, TouchableOpacity} from 'react-native';
 import {Audio} from 'expo-av';
 
 
@@ -12,11 +12,15 @@ const Pad = ({currentSong, songs, song}) => {
         )
      }
 
+     const editSound = () => {
+        console.log('shee');
+     }
+
     return(
 
     <View style ={styles.container}>
 
-        <TouchableOpacity onPress={playSound}>
+        <TouchableOpacity onLongPress={editSound} onPress={playSound}>
             <ImageBackground source={{uri:song.cover}}  style={styles.image}>
             </ImageBackground>
         </TouchableOpacity>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import data from "./data";
 import Pad from './Pad';
@@ -11,7 +11,7 @@ export default function Sampler() {
 
   // states
   const [songs,setSongs] = useState(data());
-  const [currentSong, setCurrentSong] = useState(songs[1]);
+  const [currentSong, setCurrentSong] = useState(songs[4]);
 
   //functions
 
