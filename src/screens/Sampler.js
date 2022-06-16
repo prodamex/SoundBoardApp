@@ -5,7 +5,7 @@ import SamplerEdit from "../components/SamplerEdit";
 
 const SearchNavigation = createStackNavigator();
 
-const SamplerScreen = () => {
+export default function Sampler  ()  {
   return (
     <SearchNavigation.Navigator initialRouteName="Sampler">
       <SearchNavigation.Screen
@@ -44,4 +44,3 @@ const SamplerScreen = () => {
   );
 };
 
-export default SamplerScreen;
