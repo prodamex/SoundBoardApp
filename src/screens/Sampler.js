@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import SamplerPad from "../components/SamplerPad";
 import SamplerEdit from "../components/SamplerEdit";
+import SamplerView from "../components/SamplerView";
 
 const SearchNavigation = createStackNavigator();
 
@@ -10,7 +10,7 @@ export default function Sampler  ()  {
     <SearchNavigation.Navigator initialRouteName="Sampler">
       <SearchNavigation.Screen
         name="Sampler"
-        component={SamplerPad}
+        component={SamplerView}
         options={{
           title: "Sampler",
           headerStyle: {

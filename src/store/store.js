@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import libraryReducer from "../components/Library/librarySlice";
-import samplerReducer from "../components/Sampler/samplerSlice";
+import libraryReducer from "../components/librarySlice";
+import samplerReducer from "../components/SamplerSlice";
 
 export default configureStore({
   reducer: {

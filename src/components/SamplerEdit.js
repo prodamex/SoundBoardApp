@@ -1,9 +1,9 @@
 import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { librarySelector } from "../Library/librarySlice";
-import EditItem from "./EditItem";
-import { samplerSelector } from "./samplerSlice";
+import { librarySelector } from "./librarySlice";
+import EditPad from "./EditPad";
+import { samplerSelector } from "./SamplerSlice";
 
 export default function SamplerEdit ({ route, navigation, item }) {
   const library = useSelector(librarySelector);
@@ -14,7 +14,7 @@ export default function SamplerEdit ({ route, navigation, item }) {
       <FlatList
         numColumns={1}
         renderItem={({ item }) => (
-          <EditItem id={route.params.id} item={item} navigation={navigation}></EditItem>
+          <EditPad id={route.params.id} item={item} navigation={navigation}></EditPad>
         )}
         keyExtractor={(item) => item.id.toString()}
         data={library}

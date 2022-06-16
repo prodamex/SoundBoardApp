@@ -2,7 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Sampler from "./src/screens/Sampler"
+import Sampler from "./src/screens/Sampler";
+import { Provider } from "react-redux";
+import store from "./src/store/store";
 
 export default function App() {
 
@@ -11,7 +13,8 @@ export default function App() {
 
   
   return (
-     <NavigationContainer>
+   <Provider store={store}>
+      <NavigationContainer>
      <Tabs.Navigator
      screenOptions={({ route }) => ({
        tabBarIcon: ({ focused, color, size }) => {
@@ -51,5 +54,7 @@ export default function App() {
 
    </Tabs.Navigator>
    </NavigationContainer>
+   </Provider>
+     
   );
 }  
