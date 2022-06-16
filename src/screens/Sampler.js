@@ -1,54 +1,47 @@
-import React, {useState} from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import data from "./data";
-import Pad from './Pad';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import SamplerPad from "../components/SamplerPad";
+import SamplerEdit from "../components/SamplerEdit";
 
+const SearchNavigation = createStackNavigator();
 
-
-
-export default function Sampler() {
-
-  // states
-  const [songs,setSongs] = useState(data());
-  const [currentSong, setCurrentSong] = useState(songs[4]);
-
-  //functions
-
-  
+const SamplerScreen = () => {
   return (
-    <View style={styles.library}>
-      <Text style={styles.title}>The Sampler</Text>
-        <View style={styles.libraryPads}>
-{/* on utilise .map pour afficher tous les pads qui existe dans le fichier data.js */} 
-            {songs.map(song => 
-            <Pad key={song.id} song={song}/>
-            )}
-        </View>
-        
-    </View>
+    <SearchNavigation.Navigator initialRouteName="Sampler">
+      <SearchNavigation.Screen
+        name="Sampler"
+        component={SamplerPad}
+        options={{
+          title: "Sampler",
+          headerStyle: {
+            backgroundColor: "#223343",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontSize: 32,
+            fontWeight: "700",
+            textAlign: "center",
+          },
+        }}
+      />
+      <SearchNavigation.Screen
+        name="Edit"
+        component={SamplerEdit}
+        options={{
+          title: "Edit",
+          headerStyle: {
+            backgroundColor: "#223343",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontSize: 32,
+            fontWeight: "700",
+            textAlign: "center",
+          },
+        }}
+      />
+    </SearchNavigation.Navigator>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  library: {
-    marginTop:75,
-    backgroundColor: '#fff',
-    width:'100%',
-    height:'50%'
-  },
-  libraryPads:{
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: 'center',
-    justifyContent:'center',
-
-  },
-  title:{
-    marginLeft:30,
-    color: '#BA91FC',
-    fontSize: 24,
-    marginBottom:5,
-
-},
-});
+export default SamplerScreen;

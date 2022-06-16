@@ -2,8 +2,6 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
-
 import Sampler from "./src/screens/Sampler"
 
 export default function App() {
@@ -19,18 +17,19 @@ export default function App() {
        tabBarIcon: ({ focused, color, size }) => {
          let iconName;
          switch (route.name) {
-           case "Library":
-             iconName = focused ? "library" : "library-outline";
-             break;
-           case "Sampler":
+           
+          case "Sampler":
              iconName = focused
                ? "musical-notes"
                : "musical-notes-outline";
              break;
-           case "Search":
+          case "Library":
+             iconName = focused ? "library" : "library-outline";
+             break;
+          case "Search":
              iconName = focused ? "search" : "search-outline";
              break;
-           default:
+          default:
              iconName = "ban";
              break;
          }
@@ -54,4 +53,3 @@ export default function App() {
    </NavigationContainer>
   );
 }  
-
