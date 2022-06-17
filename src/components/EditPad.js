@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Text, View, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { editSampler } from "./samplerSlice";
@@ -24,7 +24,7 @@ const requiredSound = [
 ];
 
 const EditPad = ({ id, item, navigation}) => {
-  const [sound, setSound] = React.useState();
+  const [sound, setSound] = useState();
 
   const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ const EditPad = ({ id, item, navigation}) => {
     await sound.playAsync();
   }
 
-  React.useEffect(() => {
+useEffect(() => {
     return sound
       ? () => {
           console.log("Unloading Sound");
@@ -55,16 +55,21 @@ const EditPad = ({ id, item, navigation}) => {
   return (
     <View style={styles.result}>
       <Text style={styles.heading}>{item.name}</Text>
-      <Button onPress={edit} title="Choisir ce son"></Button>
+      <Button color="#967bd2"
+       onPress={edit}
+        title="Choisir ce son"
+        ></Button>
     </View>
   );
 };
 const styles = StyleSheet.create({
   result: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fffff",
     flex: 1,
-    flexDirection: "row",
+    paddingTop: 30,
     width: "100%",
-    marginBottom: 20,
   },
   heading: {
     color: "#FFF",

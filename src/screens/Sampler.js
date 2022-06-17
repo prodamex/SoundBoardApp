@@ -9,14 +9,14 @@ export default function Sampler  ()  {
   return (
     <SearchNavigation.Navigator initialRouteName="Sampler">
       <SearchNavigation.Screen
+      
         name="Sampler"
         component={SamplerView}
         options={{
-          title: "Sampler",
-          headerStyle: {
-            backgroundColor: "#223343",
+          
+          title: "Click or hold the pads !",
+          headerStyle: { backgroundColor: "#ffffff", 
           },
-          headerTintColor: "#fff",
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: "700",
@@ -30,9 +30,8 @@ export default function Sampler  ()  {
         options={{
           title: "Edit",
           headerStyle: {
-            backgroundColor: "#223343",
+            backgroundColor: "#ffffff",
           },
-          headerTintColor: "#fff",
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: "700",

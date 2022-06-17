@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import SamplerPad from "./SamplerPad";
 import { samplerSelector } from "./samplerSlice";
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     container: {
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor: "#223343",
+        backgroundColor: "#ffffff",
         flex: 1,
         paddingTop:30
         },

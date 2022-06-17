@@ -5,6 +5,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Sampler from "./src/screens/Sampler";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
+import Library from './src/screens/Library';
+import Search from './src/components/Search';
 
 export default function App() {
 
@@ -23,14 +25,14 @@ export default function App() {
            
           case "Sampler":
              iconName = focused
-               ? "musical-notes"
-               : "musical-notes-outline";
+               ? "apps"
+               : "apps";
              break;
           case "Library":
-             iconName = focused ? "library" : "library-outline";
+             iconName = focused ? "list" : "list";
              break;
           case "Search":
-             iconName = focused ? "search" : "search-outline";
+             iconName = focused ? "add-circle" : "add-circle";
              break;
           default:
              iconName = "ban";
@@ -45,11 +47,11 @@ export default function App() {
      }}
    >
      {/* // Screen For Sampler view where to play and change pads(music)*/}
-     <Tabs.Screen name="Sampler">{(props) => <Sampler />}</Tabs.Screen>
+     <Tabs.Screen options={{headerShown: false}} name="Sampler">{(props) => <Sampler />}</Tabs.Screen>
   {/*   // Screen for Local Library and also future music added from API */}
-     <Tabs.Screen name="Library">{(props) => <Library />}</Tabs.Screen>
+     <Tabs.Screen options={{headerShown: false}} name="Library">{(props) => <Library />}</Tabs.Screen>
   {/*   // Screen for the FreeSound API, where to search for music  */}
-     <Tabs.Screen name="Search">{(props) => <Search />}</Tabs.Screen>
+     <Tabs.Screen options={{headerShown: false}} name="Search">{(props) => <Search />}</Tabs.Screen>
 
 
    </Tabs.Navigator>

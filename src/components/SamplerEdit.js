@@ -10,7 +10,7 @@ export default function SamplerEdit ({ route, navigation, item }) {
   const name = route.params.name;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> Actual: {name} </Text>
+      <Text style={styles.title}> What you choised : {name} </Text>
       <FlatList
         numColumns={1}
         renderItem={({ item }) => (
@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#223343",
+    backgroundColor: "#ffffff",
     flex: 1,
     paddingTop: 30,
   },
   title: {
-    color: "#FFF",
+    color: "#00000",
     fontSize: 32,
     fontWeight: "700",
     textAlign: "center",
