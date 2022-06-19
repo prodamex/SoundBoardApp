@@ -21,6 +21,7 @@ export default function SamplerEdit ({ route, navigation, item }) {
         keyExtractor={(item) => item.id.toString()}
         data={library}
       />
+      <Text style={styles.title}> Replace the pad : </Text>
       <FlatList
         numColumns={1}
         renderItem={({ item }) => (

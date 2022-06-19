@@ -66,6 +66,8 @@ const StopRecording = async () => {
 }
 
   return (
+
+    //button to record
     <View style={styles.container}>
       <Button
       color="#3a19c4"
@@ -73,7 +75,7 @@ const StopRecording = async () => {
       title={recording ? "Stop the recording" : "Begin the recording"}
         
       />
-      
+    {/*Component to add to library*/} 
         <View style={styles.save}>
           <Text style={styles.text}>Add to library after you stop recording</Text>
           <TextInput

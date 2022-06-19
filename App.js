@@ -50,8 +50,6 @@ export default function App() {
      <Tabs.Screen options={{headerShown: false}} name="Sampler">{(props) => <Sampler />}</Tabs.Screen>
   {/*   // Screen for Local Library and also future music added from API */}
      <Tabs.Screen options={{headerShown: false}} name="Library">{(props) => <Library />}</Tabs.Screen>
-  {/*   // Screen for the FreeSound API, where to search for music  */}
-     <Tabs.Screen options={{headerShown: false}} name="Search">{(props) => <Search />}</Tabs.Screen>
 
 
    </Tabs.Navigator>

@@ -22,6 +22,7 @@ export const librarySlice = createSlice({
     
   ],
   reducers: {
+    // Reducer to use to add the songs in the library list
     addLibrary: (state, action) => {
       let id = state.length ? state[state.length - 1].id + 1 : 0;
       return [
@@ -34,6 +35,8 @@ export const librarySlice = createSlice({
         },
       ];
     },
+        // Reducer to use to remove the songs in the library list
+
     removeLibrary: (state, action) => {
       return state.filter((item) => item.id != action.payload);
     },

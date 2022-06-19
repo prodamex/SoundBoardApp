@@ -24,6 +24,15 @@ const LibraryView = ({ route, navigation }) => {
           navigation.navigate("Record", {});
         }}
       ></Button></View>
+      <View style={styles.button2}><Button
+        title="Search a sound on web"
+        
+        color="#967bd2"
+        
+        onPress={() => {
+          navigation.navigate("Search", {});
+        }}
+      ></Button></View>
       
     </View>
   );
@@ -47,8 +56,15 @@ const styles = StyleSheet.create({
   },
   button:{
   marginTop:"20px",
-  marginBottom:"20px"
-  }
+  },
+  button:{
+  marginTop:"20px",
+  },
+  button2:{
+    marginTop:"5px",
+
+    marginBottom:"20px",
+    }
 });
 
 export default LibraryView;

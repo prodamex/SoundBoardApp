@@ -13,7 +13,7 @@ import {
 import { addLibrary } from "../components/librarySlice";
 
 
-export default function Search({ route, navigation }) {
+const Search = ({ route, navigation }) => {
 
   
   const [uri, setUri] = useState();
@@ -44,7 +44,6 @@ export default function Search({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Search on FreeSound</Text>
       <TextInput
         style={styles.search}
         onChangeText={(text) =>
@@ -62,7 +61,7 @@ export default function Search({ route, navigation }) {
         renderItem={(result) => (
           <View style={styles.result}>
             <Text style={styles.heading}> {result.item.name}</Text>
-            <Button color="#967bd2" title="Add to Library" onPress={state.samplee ? add : null}></Button>
+            <Button color="#967bd2" title="Add to Library" onPress={state.samplee ? add : ""}></Button>
           </View>
         )}
         keyExtractor={(result) => result.id}
@@ -79,13 +78,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     paddingTop: 70,
     paddingHorizontal: 20,
-  },
-  title: {
-    color: "#967bd2",
-    fontSize: 32,
-    fontWeight: "700",
-    textAlign: "center",
-    marginBottom: 20,
   },
   search: {
     fontSize: 20,
@@ -110,3 +102,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
 });
+
+
+export default Search;
