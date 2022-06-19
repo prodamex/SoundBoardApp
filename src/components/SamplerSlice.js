@@ -41,11 +41,11 @@ export const saloSlices = createSlice({
       var id = action.payload.id;
       var item = action.payload.item;
       var color = state[id-1].color;
-      var newItem = {
+      var Pad = {
         ...item,
         color: color
       };
-      state[id-1]=newItem;
+      state[id-1]=Pad;
       return state;
     },
   },

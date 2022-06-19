@@ -6,56 +6,49 @@ import Sampler from "./src/screens/Sampler";
 import { Provider } from "react-redux";
 import store from "./src/store/store";
 import Library from './src/screens/Library';
-import Search from './src/components/Search';
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function App() {
 
    // Creation of tabs variable
-   const Tabs = createBottomTabNavigator();
+   const Stack = createBottomTabNavigator();
    let persistor = persistStore(store);
   
   return (
    <Provider store={store}>
             <PersistGate persistor={persistor} loading={null}>
             <NavigationContainer>
-     <Tabs.Navigator
-     screenOptions={({ route }) => ({
-       tabBarIcon: ({ focused, color, size }) => {
-         let iconName;
-         switch (route.name) {
-           
-          case "Sampler":
-             iconName = focused
-               ? "apps"
-               : "apps";
-             break;
-          case "Library":
-             iconName = focused ? "list" : "list";
-             break;
-          case "Search":
-             iconName = focused ? "add-circle" : "add-circle";
-             break;
-          default:
-             iconName = "ban";
-             break;
-         }
-         return <Ionicons name={iconName} size={size} color={color} />;
-       },
-     })}
-     tabBarOptions={{
-       activeTintColor: "#6641D4",
-       inactiveTintColor: "#967bd2",
-     }}
+     <Stack.Navigator
+     
    >
      {/* // Screen For Sampler view where to play and change pads(music)*/}
-     <Tabs.Screen options={{headerShown: false}} name="Sampler">{(props) => <Sampler />}</Tabs.Screen>
+
+     <Stack.Screen 
+     options={
+      {headerShown: false,
+      tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="music" color={'#2a1b6d'} size={size} />
+        ),
+      }} 
+      name="Sampler">{(props) => <Sampler />}
+      </Stack.Screen>
+
   {/*   // Screen for Local Library and also future music added from API */}
-     <Tabs.Screen options={{headerShown: false}} name="Library">{(props) => <Library />}</Tabs.Screen>
+
+      <Stack.Screen 
+     options={
+      {headerShown: false,
+      tabBarIcon: ({ color, size }) => (
+          <MaterialCommunityIcons name="bookmark-box-multiple" color={'#5b45bc'} size={size} />
+        ),
+      }} 
+      name="Library">{(props) => <Library />}
+      </Stack.Screen>
 
 
-   </Tabs.Navigator>
+   </Stack.Navigator>
    </NavigationContainer>
             </PersistGate>
       

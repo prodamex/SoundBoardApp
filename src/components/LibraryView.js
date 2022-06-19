@@ -6,14 +6,15 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LibraryPad from "./LibraryPad";
 
 const LibraryView = ({ route, navigation }) => {
-  const library = useSelector(librarySelector);
+  const pads = useSelector(librarySelector);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Library</Text>
       <FlatList style={styles.flatlist}
+      numColumns={3}
         renderItem={({ item }) => <LibraryPad {...item} />}
         keyExtractor={(item) => item.id.toString()}
-        data={library}
+        data={pads}
       />
       <View style={styles.button}><Button
         title="Record a new sound"

@@ -9,11 +9,23 @@ import { samplerSelector } from "./SamplerSlice";
 
 export default function SamplerEdit ({ route, navigation, item }) {
   const library = useSelector(librarySelector);
-  const name = route.params.name;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> What you choised : {name} </Text>
+      <Text style={styles.title}> Replace the pad : </Text>
+      
       <FlatList
+        numColumns={4}
+      
+        renderItem={({ item }) => (
+          <EditPad id={route.params.id} item={item} navigation={navigation}></EditPad>
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        data={library}
+        style={styles.flatlist}
+      />
+      <Text style={styles.title}> Or edit it using the trimmer </Text>
+      <FlatList
+      style={styles.trimmer}
         numColumns={1}
         renderItem={({ item }) => (
           <EditPadMusic id={route.params.id} item={item} navigation={navigation}></EditPadMusic>
@@ -21,20 +33,19 @@ export default function SamplerEdit ({ route, navigation, item }) {
         keyExtractor={(item) => item.id.toString()}
         data={library}
       />
-      <Text style={styles.title}> Replace the pad : </Text>
-      <FlatList
-        numColumns={1}
-        renderItem={({ item }) => (
-          <EditPad id={route.params.id} item={item} navigation={navigation}></EditPad>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-        data={library}
-      />
+      
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  flatlist:{
+    marginBottom:10,
+  },
+  trimmer:{
+    height : 200,
+  },
   container: {
     justifyContent: "center",
     alignItems: "center",
