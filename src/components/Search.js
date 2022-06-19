@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 import {
   StyleSheet,
   Text,
@@ -9,19 +10,29 @@ import {
   FlatList,
   Image,
 } from "react-native";
+import { addLibrary } from "../components/librarySlice";
 
-export default function Search() {
-  const apiUrl = "https://freesound.org/apiv2/search/text/?query=";
-  const apiKey = "&token=Wf38t1aJDEvwxieZi0AzhkTrVRd9QaO2DaXQxDrR";
-  const downloadLink = "httpss://freesound.org/apiv2/sounds/x/download";
+
+export default function Search({ route, navigation }) {
+
+  
+  const [uri, setUri] = useState();
   const [state, setState] = useState({
-    s: "",
+    samplee: "",
     results: [],
     selected: {},
   });
+  const dispatch = useDispatch();
+  
 
-  const search = () =>
-    axios(apiUrl + state.s + apiKey).then(({ data }) => {
+  const add = () => {
+    
+    dispatch(addLibrary({ name: state.samplee, uri: uri, type: "uri" }));
+    navigation.navigate("Library", {});
+  };
+
+  const getMusic = () =>
+    axios("https://freesound.org/apiv2/search/text/?query=piano&token=tCQu8YPpeTTck0MOBWRcELYgHeuTqgHYuk8JBMP4").then(({ data }) => {
       let results = data.results;
 
       setState((prevState) => {
@@ -38,11 +49,11 @@ export default function Search() {
         style={styles.search}
         onChangeText={(text) =>
           setState((prevState) => {
-            return { ...prevState, s: text };
+            return { ...prevState, samplee: text };
           })
         }
         placeholder="Entrez un nom..."
-        onSubmitEditing={search}
+        onSubmitEditing={getMusic}
         value={state.s}
       />
 
@@ -51,10 +62,7 @@ export default function Search() {
         renderItem={(result) => (
           <View style={styles.result}>
             <Text style={styles.heading}> {result.item.name}</Text>
-            <Button color="#967bd2" title="add" onPress={() => {
-
-
-            }}></Button>
+            <Button color="#967bd2" title="Add to Library" onPress={state.samplee ? add : null}></Button>
           </View>
         )}
         keyExtractor={(result) => result.id}

@@ -3,6 +3,8 @@ import { FlatList, View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { librarySelector } from "./librarySlice";
 import EditPad from "./EditPad";
+import EditPadMusic from "./EditPadMusic";
+
 import { samplerSelector } from "./SamplerSlice";
 
 export default function SamplerEdit ({ route, navigation, item }) {
@@ -11,6 +13,14 @@ export default function SamplerEdit ({ route, navigation, item }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}> What you choised : {name} </Text>
+      <FlatList
+        numColumns={1}
+        renderItem={({ item }) => (
+          <EditPadMusic id={route.params.id} item={item} navigation={navigation}></EditPadMusic>
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        data={library}
+      />
       <FlatList
         numColumns={1}
         renderItem={({ item }) => (

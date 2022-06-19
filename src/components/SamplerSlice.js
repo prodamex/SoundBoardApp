@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
 export const samplerSlice = createSlice({
   name: "sampler",
   initialState: [
@@ -22,6 +24,7 @@ export const samplerSlice = createSlice({
   
   ],
   reducers: {
+    // to add a sampler when a new one is choosed
     addSampler: (state, action) => {
       let id = state.length ? state[state.length - 1].id + 1 : 0;
       return [
@@ -32,6 +35,10 @@ export const samplerSlice = createSlice({
         },
       ];
     },
+    changeSampler: (state, action) => {
+
+    },
+    // remplace the music in the pad onlongpress
     editSampler: (state, action) => {
       var id = action.payload.id;
       var item = action.payload.item;

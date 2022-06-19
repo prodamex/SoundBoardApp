@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button, Text, View, StyleSheet } from "react-native";
+import {View, StyleSheet } from "react-native";
+import Trimmer from 'react-native-trimmer';
 import { useDispatch } from "react-redux";
-import { editSampler } from "./samplerSlice";
-import { Audio } from "expo-av";
+
 
 const requiredSound = [
   require("../../assets/sounds/clap_1.wav"),
@@ -26,57 +26,50 @@ const requiredSound = [
 const EditPad = ({ id, item, navigation}) => {
 
   const dispatch = useDispatch();
-  const [sound, setSound] = useState();
 
+  const [trimmerLeftHandlePosition, setTrimmerLeftHandlePosition] = useState('0');
+  const [trimmerRightHandlePosition, setTrimmerRightHandlePosition] = useState('10000');
+  
   const edit = () => {
     dispatch(editSampler({id: id, item:item}));
     navigation.pop();
   };
 
-
-  async function playSound() {
-    console.log("Loading Sound");
-    const { sound } = await Audio.Sound.createAsync(requiredSound[id - 1]);
-    setSound(sound);
-
-    console.log("Playing Sound");
-    await sound.playAsync();
+  const onLeftHandleChange = (newLeftHandleValue) => {
+    setSound({ setTrimmerLeftHandlePosition: newLeftHandleValue })
+  }
+ 
+  const onRightHandleChange = (newRightHandleValue) => {
+    setSound({ setTrimmerRightHandlePosition: newRightHandleValue })
   }
 
-useEffect(() => {
-    return sound
-      ? () => {
-          console.log("Unloading Sound");
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
-
+  
   return (
-    <View style={styles.result}>
-      <Text style={styles.heading}>{item.name}</Text>
-      <Button color="#967bd2"
-       onPress={edit}
-       
-        title="Choisir ce son"
-        ></Button>
+    
+    <View>
+    <Trimmer
+      onHandleChange={item.onHandleChange}
+      totalDuration={60000}
+      trimmerLeftHandlePosition={trimmerLeftHandlePosition}
+      trimmerRightHandlePosition={trimmerRightHandlePosition}
+    />
     </View>
   );
 };
 const styles = StyleSheet.create({
   result: {
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#fffff",
     flex: 1,
     paddingTop: 30,
-    justifyContent: "center",
-    alignItems: "center",
     width: "100%",
   },
   heading: {
     color: "#FFF",
+    backgroundColor: "#445565",
     padding: 20,
     fontSize: 18,
-    backgroundColor: "#445565",
     fontWeight: "700",
   },
 });
