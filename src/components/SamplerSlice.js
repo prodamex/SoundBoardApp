@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 
-export const samplerSlice = createSlice({
+export const saloSlices = createSlice({
   name: "sampler",
   initialState: [
     { id: 1, name: "Bra", uri: "kick1.wav", type: "require", color: "#967bd2" },
@@ -35,9 +35,7 @@ export const samplerSlice = createSlice({
         },
       ];
     },
-    changeSampler: (state, action) => {
-
-    },
+  
     // remplace the music in the pad onlongpress
     editSampler: (state, action) => {
       var id = action.payload.id;
@@ -53,6 +51,6 @@ export const samplerSlice = createSlice({
   },
 });
 
-export const { addSampler, editSampler } = samplerSlice.actions;
+export const { addSampler, editSampler } = saloSlices.actions;
 export const samplerSelector = (state) => state.sampler;
-export default samplerSlice.reducer;
+export default saloSlices.reducer;

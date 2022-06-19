@@ -7,16 +7,19 @@ import { Provider } from "react-redux";
 import store from "./src/store/store";
 import Library from './src/screens/Library';
 import Search from './src/components/Search';
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
 export default function App() {
 
    // Creation of tabs variable
    const Tabs = createBottomTabNavigator();
-
+   let persistor = persistStore(store);
   
   return (
    <Provider store={store}>
-      <NavigationContainer>
+            <PersistGate persistor={persistor} loading={null}>
+            <NavigationContainer>
      <Tabs.Navigator
      screenOptions={({ route }) => ({
        tabBarIcon: ({ focused, color, size }) => {
@@ -54,6 +57,8 @@ export default function App() {
 
    </Tabs.Navigator>
    </NavigationContainer>
+            </PersistGate>
+      
    </Provider>
      
   );
