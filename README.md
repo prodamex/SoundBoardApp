@@ -1,7 +1,8 @@
 <h1>SoundBoard - React Native <img style="width:25px; height:25px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"></img></h1>
 <hr>
 
-<b><i>📚 Dans le cadre des études - Licence pro UPMC.</i></b>
+<b><i>📚 Dans le cadre des études - Licence pro UPMC.</i></b><br><br>
+<a href="https://github.com/prodamex/SoundBoardApp/blob/master/SoundBoard%20report%20in%20English.pdf"><b>📑 Rapport en Anglais - Pdf</b></a>
 <hr>
 <b>- Sampler</b><br>
 Première vue est un écran de Sampler contenant une grille de pads, permettant à l’utilisateur de lancer la lecture des pads.<br>
